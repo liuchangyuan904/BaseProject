@@ -3,19 +3,30 @@
     package="com.common.project">
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.OverviewActivity" />
+        <activity android:name=".activity.QueryActivity" />
+        <activity android:name=".activity.UpdateActivity" />
+        <activity android:name=".activity.AddBuildingActivity" />
+        <activity android:name=".activity.BuildingUpdateActivity" />
+        <activity android:name=".activity.RouteLineUpdateActivity" />
+        <activity android:name=".activity.BuildingDetailActivity" />
+        <activity android:name=".activity.DeleteBuildingActivity" />
+        <activity android:name=".activity.AddRouteActivity" />
+        <activity android:name=".activity.RouteListActivity"></activity>
     </application>
 
 </manifest>

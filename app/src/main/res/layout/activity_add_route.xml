@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".activity.QueryActivity">
+    <RelativeLayout
+        android:id="@+id/layoutTitle"
+        android:layout_width="match_parent"
+        android:background="#718B66"
+        android:paddingTop="20dp"
+        android:layout_height="70dp">
+        <RelativeLayout
+            android:id="@+id/backImg"
+            android:layout_centerVertical="true"
+            android:layout_width="60dp"
+            android:layout_height="60dp">
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:src="@mipmap/back_img"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="新增路径"
+            android:layout_toRightOf="@+id/backImg"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:textColor="@android:color/white"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_marginTop="120dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:text="从："
+            android:padding="15dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/chooseSrcTextView"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="请选择起点"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:paddingRight="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:text="到："
+            android:padding="15dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/chooseDestTextView"
+            android:text="请选择终点"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:paddingRight="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:text="距离："
+            android:padding="15dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/distanceEditText"
+            android:inputType="number"
+            android:maxLength="6"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:hint="请输入距离"
+            android:paddingRight="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addLineBtn"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/btn_selector"
+        android:layout_width="wrap_content"
+        android:text="新增"
+        android:layout_height="wrap_content" />
+</LinearLayout>

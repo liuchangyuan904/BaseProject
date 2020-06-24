@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.BuildingDetailActivity">
+    <RelativeLayout
+        android:id="@+id/layoutTitle"
+        android:layout_width="match_parent"
+        android:background="#718B66"
+        android:paddingTop="20dp"
+        android:layout_height="70dp">
+        <RelativeLayout
+            android:id="@+id/backImg"
+            android:layout_centerVertical="true"
+            android:layout_width="60dp"
+            android:layout_height="60dp">
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:src="@mipmap/back_img"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="景点详情"
+            android:layout_toRightOf="@+id/backImg"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:textColor="@android:color/white"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <TextView
+        android:padding="20dp"
+        android:textSize="20sp"
+        android:id="@+id/buildingNumView"
+        android:textColor="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:padding="20dp"
+        android:textSize="20sp"
+        android:id="@+id/titleTextView"
+        android:textColor="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:padding="20dp"
+        android:textSize="17sp"
+        android:id="@+id/contentTextView"
+        android:textColor="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

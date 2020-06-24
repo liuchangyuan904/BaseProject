@@ -1,3 +1,25 @@
 <resources>
-    <string name="app_name">BaseProject</string>
+    <string name="app_name">无向图</string>
+    <string-array name="sights">
+        <item>大名桥</item>
+        <item>图书馆</item>
+        <item>教学楼</item>
+        <item>子吟餐厅</item>
+        <item>实验A楼</item>
+        <item>实验B楼</item>
+        <item>实验C楼</item>
+        <item>葡园餐厅</item>
+        <item>秀元餐厅</item>
+    </string-array>
+    <string-array name="sightsDescription">
+        <item>落于小河上，风景优美</item>
+        <item>环境优雅，充满书香气息，呈环形</item>
+        <item>上课和自习的地方，临近图书馆</item>
+        <item>一餐厅，重新装修过的餐厅，临近实验楼，是男女比例适中的餐厅</item>
+        <item>老师办公室</item>
+        <item>计算机机房</item>
+        <item>电气实验室</item>
+        <item>第二餐厅，临近男生宿舍，食物种类比较多</item>
+        <item>第三餐厅，临近女生宿舍，比较便宜</item>
+    </string-array>
 </resources>
