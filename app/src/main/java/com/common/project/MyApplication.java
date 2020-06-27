@@ -5,7 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.common.project.dao.DaoMaster;
 import com.common.project.dao.DaoSession;
-import com.common.project.entity.MGraph;
 
 public class MyApplication extends Application {
     public static final int MAX=20000;
@@ -14,7 +13,6 @@ public class MyApplication extends Application {
     private DaoMaster mDaoMaster;
     private DaoSession mDaoSession;
     private DaoMaster.DevOpenHelper mHelper;
-    private MGraph mGraph=new MGraph();
     @Override
     public void onCreate() {
         super.onCreate();
@@ -46,7 +44,4 @@ public class MyApplication extends Application {
         return db;
     }
 
-    public MGraph getmGraph() {
-        return mGraph;
-    }
 }
