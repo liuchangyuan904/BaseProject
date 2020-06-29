@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -35,7 +36,7 @@
                 android:src="@mipmap/user_grey" />
 
             <EditText
-                android:id="@+id/act_phone_txt"
+                android:id="@+id/userEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -75,6 +76,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
+                android:inputType="textPassword"
                 android:background="@null"
                 android:hint="@string/login_pwd_hint"
                 android:singleLine="true"
@@ -112,6 +114,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
+                android:inputType="textPassword"
                 android:background="@null"
                 android:hint="@string/login_pwd_verify_hint"
                 android:singleLine="true"

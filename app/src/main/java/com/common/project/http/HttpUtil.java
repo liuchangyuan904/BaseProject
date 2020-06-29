@@ -82,6 +82,7 @@ public class HttpUtil {
                 Log.d(TAG, "onSucceed: register Success "+response.get().toString());
                 if (response.get().optInt("status")==0){
                     httpResponseListener.onSuccess(response.get().toString());
+                    Toast.makeText(context,"注册成功！",Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(context,response.get().optString("msg"),Toast.LENGTH_SHORT).show();
                 }
