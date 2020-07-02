@@ -9,9 +9,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.common.project.Constans;
 import com.common.project.R;
+import com.common.project.entity.UserEntity;
 import com.common.project.http.HttpUtil;
 import com.common.project.listener.HttpResponseListener;
+import com.google.gson.Gson;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,26 +38,30 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
     }
-    @OnClick({R.id.loginCommitTextView,R.id.registerCommitTextView})
-    public void onClick(View view){
-        switch (view.getId()){
+
+    @OnClick({R.id.loginCommitTextView, R.id.registerCommitTextView})
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.loginCommitTextView:
                 HttpUtil.login(this, userEditText.getText().toString().trim(), passwordEditText.getText().toString().trim(), new HttpResponseListener() {
                     @Override
                     public void onSuccess(String json) {
-                        Log.d(TAG, "onSuccess: "+json);
-                        startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                        Log.d(TAG, "onSuccess: " + json);
+                        UserEntity userEntity = new Gson().fromJson(json, UserEntity.class);
+                        Constans.userEntity = userEntity;
+                        Constans.cityId=userEntity.getData().getCityId()==null?"4":userEntity.getData().getCityId().toString();
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
                     }
 
                     @Override
                     public void onFailed(String json) {
-                        Log.d(TAG, "onFailed: "+json);
+                        Log.d(TAG, "onFailed: " + json);
                     }
                 });
                 break;
             case R.id.registerCommitTextView:
-                startActivity(new Intent(this,RegisterActivity.class));
+                startActivity(new Intent(this, RegisterActivity.class));
                 break;
         }
     }

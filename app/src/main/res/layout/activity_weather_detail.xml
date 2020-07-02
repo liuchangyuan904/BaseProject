@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".activity.WeatherDetailActivity">
+    <com.common.project.CommonHead
+        android:id="@+id/act_phone_head"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingTop="5dp"
+        android:gravity="center"
+        android:background="@color/day_page_bg"
+        app:leftImg="@mipmap/icon_backarrow"
+        app:mid_txt="详情"
+        app:mid_txt_color="@color/main_color"
+        app:show_left="true" ></com.common.project.CommonHead>
+    <TextView
+        android:id="@+id/userIdTextView"
+        android:text="当前所在地"
+        android:textColor="@color/day_text_color"
+        android:textSize="16sp"
+        android:paddingLeft="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <View
+        android:background="@color/day_1px_divider_color"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <TextView
+        android:text="星期天 今天"
+        android:textColor="@color/day_text_color"
+        android:textSize="16sp"
+        android:paddingLeft="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <View
+        android:background="@color/day_1px_divider_color"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <TextView
+        android:id="@+id/currentWeatherTextView"
+        android:text="现在温度 湿度 PM2.5"
+        android:textColor="@color/day_text_color"
+        android:textSize="16sp"
+        android:paddingLeft="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:gravity="center"
+        android:background="@color/find_pwd_bg"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="日期"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="1dp"
+            android:background="@color/white"
+            android:layout_height="20dp"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="天气"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="1dp"
+            android:background="@color/white"
+            android:layout_height="20dp"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="温度"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        android:layout_weight="1"></ListView>
+</LinearLayout>
