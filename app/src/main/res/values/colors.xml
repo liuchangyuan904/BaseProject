@@ -11,6 +11,7 @@
     <color name="white">#ffffff</color>
     <color name="process_white">#fde399</color>
     <color name="orange">#FFB90F</color>
+    <color name="divider">#BCBCBC</color>
 
     <color name="bottom_bar_normal_bg">#F9F9F9</color>
     <color name="tab_divider">#ffbababa</color>

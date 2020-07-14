@@ -5,7 +5,7 @@
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-11
+    11
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -22,7 +22,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.RegisterActivity"></activity>
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.ForgetPasswordActivity" />
+        <activity android:name=".activity.ChooseBookActivity" />
+        <activity android:name=".activity.StudyPlanActivity" />
+        <activity android:name=".activity.StartRememberWordActivity" />
+        <activity android:name=".activity.ReviewWordActivity" />
+        <activity android:name=".activity.NewWordBookActivity" />
+        <activity android:name=".activity.StudyRemindActivity" />
+        <activity android:name=".activity.WordBookActivity" />
+        <activity android:name=".activity.MyDataActivity"></activity>
     </application>
 
 </manifest>

@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">天气查询</string>
-    <string name="login_name_hint">请输入用户名</string>
+    <string name="app_name">背单词</string>
+    <string name="login_name_hint">请输入账号</string>
     <string name="login_pwd_hint">请输入密码</string>
     <string name="login_pwd_verify_hint">请再次输入密码</string>
+    <string name="login_pwd_new_hint">请再次新密码</string>
     <string name="register">注册</string>
     <string name="forgot_pwd">忘记密码?</string>
     <string name="phone_verify_hint">请输入手机验证码</string>
@@ -10,4 +11,5 @@
     <string name="find_pwd">找回密码</string>
     <string name="login">登录</string>
     <string name="login_tip">用户名或密码不能为空哦！</string>
+    <string name="confirm">确定</string>
 </resources>
