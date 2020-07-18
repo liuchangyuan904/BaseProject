@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">天气查询</string>
+    <string name="app_name">教育App</string>
     <string name="login_name_hint">请输入用户名</string>
     <string name="login_pwd_hint">请输入密码</string>
     <string name="login_pwd_verify_hint">请再次输入密码</string>

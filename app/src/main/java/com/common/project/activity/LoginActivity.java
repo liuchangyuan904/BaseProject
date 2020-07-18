@@ -43,8 +43,8 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(String json) {
                         Log.d(TAG, "onSuccess: "+json);
-                        startActivity(new Intent(LoginActivity.this,MainActivity.class));
-                        finish();
+//                        startActivity(new Intent(LoginActivity.this,MainActivity.class));
+//                        finish();
                     }
 
                     @Override
