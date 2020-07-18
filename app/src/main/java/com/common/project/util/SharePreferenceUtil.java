@@ -15,4 +15,5 @@ public class SharePreferenceUtil {
         SharedPreferences sharedPreferences = context.getSharedPreferences("remember", Context.MODE_PRIVATE); //私有数据
         return sharedPreferences.getString(key, "");
     }
+
 }

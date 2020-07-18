@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.StudyPlanActivity">
+    tools:context=".activity.SetStudyCountPlanActivity">
 
     <com.common.project.CommonHead
         android:id="@+id/act_phone_head"
@@ -13,48 +13,91 @@
         android:layout_height="wrap_content"
         android:background="@color/day_page_bg"
         app:leftImg="@mipmap/icon_backarrow"
-        app:mid_txt="制定计划"
+        app:mid_txt="学习计划"
         app:mid_txt_color="@color/main_color"
         app:show_left="true"></com.common.project.CommonHead>
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:layout_marginLeft="25dp"
-        android:gravity="center|left"
-        android:orientation="horizontal">
-
-        <EditText
-            android:maxLength="4"
-            android:id="@+id/studyCountEditText"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="15dp"
-            android:background="@null"
-            android:hint="请输入每天背多少个单词"
-            android:inputType="number"
-            android:singleLine="true"
-            android:textColor="@color/day_text_color"
-            android:textColorHint="@color/grey"
-            android:textSize="16sp" />
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/red_bg">
 
         <TextView
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="5dp"
-            android:layout_marginRight="15dp"
-            android:paddingBottom="5dp"
-            android:id="@+id/confirmTextView"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/bookNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/red_no_radius_bg"
             android:gravity="center"
-            android:text="@string/confirm"
-            android:textColor="@color/white"
-            android:textSize="17sp" />
+            android:paddingTop="10dp"
+            android:paddingBottom="8dp"
+            android:text="单词书名称："
+            android:textColor="@color/day_text_color"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/wordCountTextView"
+            android:layout_below="@+id/bookNameTextView"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="8dp"
+            android:text="单词数量："
+            android:textColor="@color/day_text_color"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/dayStudyCountTextView"
+            android:layout_below="@+id/wordCountTextView"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="8dp"
+            android:text="每日学习："
+            android:textColor="@color/day_text_color"
+            android:textSize="18sp" />
 
-    </LinearLayout>
-
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/changeBookTextView"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/find_pwd_bg"
+        android:gravity="center"
+        android:text="修改单词书"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+    <TextView
+        android:id="@+id/modifyCountTextView"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/find_pwd_bg"
+        android:gravity="center"
+        android:text="修改每日单词量"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+    <TextView
+        android:id="@+id/resetTextView"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/find_pwd_bg"
+        android:gravity="center"
+        android:text="重置"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
 </LinearLayout>

@@ -7,7 +7,7 @@
     <RelativeLayout
         android:id="@+id/head_common_lin"
         android:layout_width="match_parent"
-        android:layout_height="46dp"
+        android:layout_height="60dp"
         android:background="@color/bg_main_normal">
 
         <LinearLayout
@@ -28,7 +28,7 @@
                 android:layout_centerVertical="true"
                 android:layout_gravity="center_vertical"
                 android:src="@mipmap/icon_backarrow"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
         </LinearLayout>
 

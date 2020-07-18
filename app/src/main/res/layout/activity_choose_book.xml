@@ -14,7 +14,7 @@
         app:leftImg="@mipmap/icon_backarrow"
         app:mid_txt="选择词书"
         app:mid_txt_color="@color/main_color"
-        app:show_left="true" ></com.common.project.CommonHead>
+        app:show_left="false" ></com.common.project.CommonHead>
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
