@@ -5,7 +5,7 @@
     android:minWidth="300dp"
     android:layout_gravity="center"
     android:layout_centerInParent="true"
-    android:background="@color/colorAccent"
+    android:background="@color/find_pwd_bg"
     android:paddingTop="16dp"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">

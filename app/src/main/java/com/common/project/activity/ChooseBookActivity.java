@@ -3,6 +3,7 @@ package com.common.project.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,8 +102,13 @@ public class ChooseBookActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     SharePreferenceUtil.saveString(ChooseBookActivity.this,Constants.CHOOSE_BOOK,""+i);
-                    startActivity(new Intent(ChooseBookActivity.this, SetStudyCountPlanActivity.class));
-                    finish();
+                    if (TextUtils.isEmpty(SharePreferenceUtil.getString(ChooseBookActivity.this,Constants.PLAN_STUDY_COUNT))){
+                        startActivity(new Intent(ChooseBookActivity.this, SetStudyCountPlanActivity.class));
+                        finish();
+                    }else {
+                        startActivity(new Intent(ChooseBookActivity.this, MainActivity.class));
+                        finish();
+                    }
 
                 }
             });

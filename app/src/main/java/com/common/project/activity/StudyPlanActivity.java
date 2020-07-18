@@ -1,7 +1,9 @@
 package com.common.project.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 import com.common.project.CommonHead;
@@ -9,6 +11,7 @@ import com.common.project.Constants;
 import com.common.project.R;
 import com.common.project.entity.BookListEntity;
 import com.common.project.util.SharePreferenceUtil;
+import com.common.project.view.CommonAlterDialog;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -52,6 +55,67 @@ public class StudyPlanActivity extends AppCompatActivity {
         bookId = Integer.valueOf(SharePreferenceUtil.getString(this, Constants.CHOOSE_BOOK));
         bookNameTextView.setText("单词书名称：" + bookListBeanList.get(bookId).getTitle());
         wordCountTextView.setText("单词数量：    " + bookListBeanList.get(bookId).getWordNum() + "个");
-        dayStudyCountTextView.setText("每日学习:       "+SharePreferenceUtil.getString(this,Constants.PLAN_STUDY_COUNT)+"个");
+        dayStudyCountTextView.setText("每日学习:       " + SharePreferenceUtil.getString(this, Constants.PLAN_STUDY_COUNT) + "个");
+        changeBookTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final CommonAlterDialog suredialog = new CommonAlterDialog(StudyPlanActivity.this);
+                suredialog.setMessage("确认修改单词书么？")
+                        .setTitle("提示")
+                        .setSingle(false).setOnClickBottomListener(new CommonAlterDialog.OnClickBottomListener() {
+                    @Override
+                    public void onPositiveClick() {
+                        SharePreferenceUtil.saveString(StudyPlanActivity.this,Constants.CHOOSE_BOOK,"");
+                        startActivity(new Intent(StudyPlanActivity.this,ChooseBookActivity.class));
+                        suredialog.dismiss();
+                        finish();
+                    }
+
+                    @Override
+                    public void onNegtiveClick() {
+                        suredialog.dismiss();
+                    }
+                });
+                suredialog.show();
+            }
+        });
+        modifyCountTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(StudyPlanActivity.this,SetStudyCountPlanActivity.class));
+            }
+        });
+        resetTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final CommonAlterDialog suredialog = new CommonAlterDialog(StudyPlanActivity.this);
+                suredialog.setMessage("是否清空所有？")
+                        .setTitle("提示")
+                        .setSingle(false).setOnClickBottomListener(new CommonAlterDialog.OnClickBottomListener() {
+                    @Override
+                    public void onPositiveClick() {
+                        SharePreferenceUtil.saveString(StudyPlanActivity.this,Constants.CHOOSE_BOOK,"");
+                        SharePreferenceUtil.saveString(StudyPlanActivity.this,Constants.PLAN_STUDY_COUNT,"");
+                        SharePreferenceUtil.saveString(StudyPlanActivity.this,Constants.START_REMEMBER_POSITION,"");
+                        SharePreferenceUtil.saveString(StudyPlanActivity.this,Constants.HAVE_REMEMBER_WORD_COUNT,"");
+                        startActivity(new Intent(StudyPlanActivity.this,ChooseBookActivity.class));
+                        suredialog.dismiss();
+                        finish();
+                    }
+
+                    @Override
+                    public void onNegtiveClick() {
+                        suredialog.dismiss();
+                    }
+                });
+                suredialog.show();
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        dayStudyCountTextView.setText("每日学习:       " + SharePreferenceUtil.getString(this, Constants.PLAN_STUDY_COUNT) + "个");
     }
 }
