@@ -13,12 +13,15 @@ import com.common.project.MyApplication;
 import com.common.project.R;
 import com.common.project.entity.NewWordEntity;
 import com.common.project.entity.WordEntity;
+import com.common.project.util.InitWordUtil;
 import com.common.project.util.ToastUtil;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.common.project.Constants.SOUND_URL;
 
 public class WordDetailActivity extends AppCompatActivity {
 
@@ -74,24 +77,34 @@ public class WordDetailActivity extends AppCompatActivity {
         putNewWordBookTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NewWordEntity newWordEntity=new NewWordEntity();
+                NewWordEntity newWordEntity = new NewWordEntity();
                 newWordEntity.setIndex(startRememberWordPosition);
                 newWordEntity.setWordHead(wordEntity.getHeadWord());
                 newWordEntity.setWordTrans(wordEntity.getContent().getWord().getContent().getTrans().get(0).getTranCn());
-                if (isExist(startRememberWordPosition)){
-                    ToastUtil.showToast(WordDetailActivity.this,"生词本中已经包含了哦！");
+                if (isExist(startRememberWordPosition)) {
+                    ToastUtil.showToast(WordDetailActivity.this, "生词本中已经包含了哦！");
                     return;
                 }
                 MyApplication.getInstance().getSession().getNewWordEntityDao().insert(newWordEntity);
-                ToastUtil.showToast(WordDetailActivity.this,"单词已放入生词本中！");
+                ToastUtil.showToast(WordDetailActivity.this, "单词已放入生词本中！");
             }
         });
+
+
+        voiceWordTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String uri = SOUND_URL + wordEntity.getHeadWord();
+                InitWordUtil.playOnlineSound(uri);
+            }
+        });
+
     }
 
     private boolean isExist(int startRememberWordPosition) {
         List<NewWordEntity> newWordEntityList = MyApplication.getInstance().getSession().getNewWordEntityDao().queryBuilder().list();
-        for (NewWordEntity wordEntity:newWordEntityList) {
-            if (startRememberWordPosition==wordEntity.getIndex()){
+        for (NewWordEntity wordEntity : newWordEntityList) {
+            if (startRememberWordPosition == wordEntity.getIndex()) {
                 return true;
             }
         }
@@ -101,6 +114,9 @@ public class WordDetailActivity extends AppCompatActivity {
     private String getEgText() {
         String eg = "";
         WordEntity.ContentBeanX.WordBean.ContentBean.SentenceBean sentence = wordEntity.getContent().getWord().getContent().getSentence();
+        if (sentence == null) {
+            return eg;
+        }
         for (WordEntity.ContentBeanX.WordBean.ContentBean.SentenceBean.SentencesBean bean : sentence.getSentences()) {
             eg = eg + bean.getSContent() + "\n";
             eg = eg + bean.getSCn() + "\n";

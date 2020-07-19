@@ -46,6 +46,12 @@ public class StudyPlanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_study_plan);
         ButterKnife.bind(this);
+        actPhoneHead.setLeftClick(new CommonHead.CommonHeadLeftClick() {
+            @Override
+            public void LeftClick() {
+                finish();
+            }
+        });
         bookListEntity = new Gson().fromJson(bookListJson, BookListEntity.class);
         bookListBeanList.clear();
         for (BookListEntity.CatesBean catesBean :
@@ -82,7 +88,9 @@ public class StudyPlanActivity extends AppCompatActivity {
         modifyCountTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(StudyPlanActivity.this,SetStudyCountPlanActivity.class));
+                Intent intent=new Intent(StudyPlanActivity.this,SetStudyCountPlanActivity.class);
+                intent.putExtra("type","start_plan");
+                startActivity(intent);
             }
         });
         resetTextView.setOnClickListener(new View.OnClickListener() {

@@ -1,8 +1,10 @@
 package com.common.project.util;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import com.common.project.Constants;
 import com.common.project.entity.WordEntity;
@@ -14,6 +16,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class InitWordUtil {
+    private static final String TAG = "InitWordUtil";
     public static void initWordBook(Handler handler, Context context, int bookId) {
         String fileName;
         if (bookId == 0) {
@@ -43,4 +46,41 @@ public class InitWordUtil {
             e.printStackTrace();
         }
     }
+
+    /**
+     * 播放发音
+     * @param soundUrlDict
+     */
+    public static void playOnlineSound(String soundUrlDict) {
+        try {
+            MediaPlayer mediaPlayer = new MediaPlayer();
+            mediaPlayer.setDataSource(soundUrlDict);
+            mediaPlayer.prepareAsync();
+            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mediaPlayer) {
+                    mediaPlayer.start();
+                }
+            });
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    if (mp != null) {
+                        mp.release();
+                    }
+                    Log.d(TAG, "onCompletion: play sound.");
+                }
+            });
+            mediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+                @Override
+                public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {
+                    Log.d(TAG, "Play online sound onError: " + i + ", " + i1);
+                    return false;
+                }
+            });
+        } catch (IOException e1) {
+            Log.e(TAG, "url: ", e1);
+        }
+    }
+
 }

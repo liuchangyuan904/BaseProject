@@ -25,7 +25,7 @@ public class SetStudyCountPlanActivity extends AppCompatActivity {
     EditText studyCountEditText;
     @BindView(R.id.confirmTextView)
     TextView confirmTextView;
-
+    private String type;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +40,9 @@ public class SetStudyCountPlanActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(SharePreferenceUtil.getString(this, PLAN_STUDY_COUNT))) {
             studyCountEditText.setText(SharePreferenceUtil.getString(this, PLAN_STUDY_COUNT));
         }
+        if (getIntent()!=null){
+            type=getIntent().getStringExtra("type");
+        }
         confirmTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,8 +50,13 @@ public class SetStudyCountPlanActivity extends AppCompatActivity {
                     ToastUtil.showToast(SetStudyCountPlanActivity.this, "请输入每天背多少个单词哦！");
                 }
                 SharePreferenceUtil.saveString(SetStudyCountPlanActivity.this, PLAN_STUDY_COUNT, studyCountEditText.getText().toString().trim());
-                startActivity(new Intent(SetStudyCountPlanActivity.this,MainActivity.class));
-                finish();
+                if (TextUtils.isEmpty(type)){
+                    startActivity(new Intent(SetStudyCountPlanActivity.this,MainActivity.class));
+                    finish();
+                }else {
+                    finish();
+                }
+
             }
         });
     }

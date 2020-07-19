@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         String currentDate = simpleDateFormat.format(new Date(currentTimeMillis));
         Log.d(TAG, "onCreate: "+currentDate);
         if (!currentDate.equals(SharePreferenceUtil.getString(this,Constants.DAY_TIME))){
+            SharePreferenceUtil.saveString(this,Constants.DAY_TIME,currentDate);
             SharePreferenceUtil.saveString(this,Constants.HAVE_REMEMBER_WORD_COUNT,"0");
         }
         if (SharePreferenceUtil.getString(this, Constants.LOGIN).equals("login")) {
