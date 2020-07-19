@@ -15,6 +15,7 @@ import com.common.project.CommonHead;
 import com.common.project.Constants;
 import com.common.project.MyApplication;
 import com.common.project.R;
+import com.common.project.entity.DayStudyEntity;
 import com.common.project.entity.NewWordEntity;
 import com.common.project.entity.UnKnownWordEntity;
 import com.common.project.entity.WordEntity;
@@ -66,7 +67,7 @@ public class StartRememberWordActivity extends AppCompatActivity {
         }
         if (TextUtils.isEmpty(SharePreferenceUtil.getString(this, Constants.HAVE_REMEMBER_WORD_COUNT))) {
             rememberWordStateTextView.setText("已背： 0个   一共：" + SharePreferenceUtil.getString(this, Constants.PLAN_STUDY_COUNT) + "个");
-        }else {
+        } else {
             rememberWordStateTextView.setText("已背：" + SharePreferenceUtil.getString(this, Constants.HAVE_REMEMBER_WORD_COUNT) + "个   一共：" + SharePreferenceUtil.getString(this, Constants.PLAN_STUDY_COUNT) + "个");
         }
         actPhoneHead.setLeftClick(new CommonHead.CommonHeadLeftClick() {
@@ -102,6 +103,7 @@ public class StartRememberWordActivity extends AppCompatActivity {
         knownWordTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startRememberWordPosition = startRememberWordPosition + 1;
                 SharePreferenceUtil.saveString(StartRememberWordActivity.this, Constants.START_REMEMBER_POSITION, startRememberWordPosition + "");
                 currentWordEntity = Constants.wordEntityList.get(startRememberWordPosition);
@@ -114,11 +116,10 @@ public class StartRememberWordActivity extends AppCompatActivity {
         voiceWordTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String uri=SOUND_URL+currentWordEntity.getHeadWord();
+                String uri = SOUND_URL + currentWordEntity.getHeadWord();
                 InitWordUtil.playOnlineSound(uri);
             }
         });
-
 
 
     }
@@ -146,6 +147,26 @@ public class StartRememberWordActivity extends AppCompatActivity {
         if (TextUtils.equals(rememberCount + 1 + "", SharePreferenceUtil.getString(this, Constants.PLAN_STUDY_COUNT))) {
             showCompleteDialog();
         }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy:MM:dd");
+        String currentDay = simpleDateFormat.format(new Date());
+        DayStudyEntity dayStudyEntity = new DayStudyEntity();
+        dayStudyEntity.setDayTime(currentDay);
+        dayStudyEntity.setIndex(rememberCount + 1);
+        dayStudyEntity.setTrans(Constants.wordEntityList.get(rememberCount + 1).getContent().getWord().getContent().getTrans().get(0).getTranCn());
+        dayStudyEntity.setWordHead(Constants.wordEntityList.get(rememberCount + 1).getHeadWord());
+        if (!isExitStudyWord(rememberCount + 1)) {
+            MyApplication.getInstance().getSession().getDayStudyEntityDao().insert(dayStudyEntity);
+        }
+    }
+
+    private boolean isExitStudyWord(int index) {
+        List<DayStudyEntity> newWordEntityList = MyApplication.getInstance().getSession().getDayStudyEntityDao().queryBuilder().list();
+        for (DayStudyEntity wordEntity : newWordEntityList) {
+            if (index == wordEntity.getIndex()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

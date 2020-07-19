@@ -15,4 +15,49 @@
         app:mid_txt="我的数据"
         app:mid_txt_color="@color/main_color"
         app:show_left="true"></com.common.project.CommonHead>
+    <LinearLayout
+        android:layout_below="@+id/userLayout"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/myStudyTextView"
+            android:layout_width="match_parent"
+            android:text="我的学习"
+            android:padding="20dp"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+        <View
+            android:background="@color/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <TextView
+            android:id="@+id/myReviewTextView"
+            android:layout_width="match_parent"
+            android:text="我的复习"
+            android:padding="20dp"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+        <View
+            android:background="@color/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <TextView
+            android:id="@+id/studyProgressTextView"
+            android:layout_width="match_parent"
+            android:text="学习进度"
+            android:padding="20dp"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+        <View
+            android:background="@color/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+
+
+    </LinearLayout>
 </LinearLayout>
