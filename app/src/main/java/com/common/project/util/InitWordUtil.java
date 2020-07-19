@@ -17,7 +17,7 @@ import java.io.InputStreamReader;
 
 public class InitWordUtil {
     private static final String TAG = "InitWordUtil";
-    public static void initWordBook(Handler handler, Context context, int bookId) {
+    public static void initWordBook(int what,Handler handler, Context context, int bookId) {
         String fileName;
         if (bookId == 0) {
             fileName = "IELTSluan_2.json";
@@ -39,7 +39,7 @@ public class InitWordUtil {
                 Constants.wordEntityList.add(wordEntity);
             }
             Message message=new Message();
-            message.what=0;
+            message.what=what;
             handler.sendMessage(message);
             instream.close();
         } catch (IOException e) {

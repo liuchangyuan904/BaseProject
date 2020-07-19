@@ -23,6 +23,7 @@ import com.common.project.R;
 import com.common.project.entity.UnKnownWordEntity;
 import com.common.project.util.InitWordUtil;
 import com.common.project.util.SharePreferenceUtil;
+import com.common.project.util.ToastUtil;
 import com.common.project.view.CommonAlterDialog;
 
 import java.text.SimpleDateFormat;
@@ -103,6 +104,11 @@ public class ReviewWordActivity extends AppCompatActivity {
                 dRadioBtn.setText(answers[3]);
             }
         } else {
+            if (unKnownWordEntities.size()==0){
+                ToastUtil.showToast(this,"您还没开始背单词哦！");
+                finish();
+                return;
+            }
             final CommonAlterDialog suredialog = new CommonAlterDialog(ReviewWordActivity.this);
             suredialog.setMessage("今日任务已完成")
                     .setTitle("提示")

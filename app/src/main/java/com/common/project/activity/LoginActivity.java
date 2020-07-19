@@ -39,6 +39,10 @@ public class LoginActivity extends AppCompatActivity {
     TextView registerCommitTextView;
     @BindView(R.id.layoutContent)
     LinearLayout layoutContent;
+    @BindView(R.id.forgetTextView)
+    TextView forgetTextView;
+    @BindView(R.id.googleTextView)
+    TextView googleTextView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,10 +52,10 @@ public class LoginActivity extends AppCompatActivity {
         long currentTimeMillis = System.currentTimeMillis();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy:MM:dd");
         String currentDate = simpleDateFormat.format(new Date(currentTimeMillis));
-        Log.d(TAG, "onCreate: "+currentDate);
-        if (!currentDate.equals(SharePreferenceUtil.getString(this,Constants.DAY_TIME))){
-            SharePreferenceUtil.saveString(this,Constants.DAY_TIME,currentDate);
-            SharePreferenceUtil.saveString(this,Constants.HAVE_REMEMBER_WORD_COUNT,"0");
+        Log.d(TAG, "onCreate: " + currentDate);
+        if (!currentDate.equals(SharePreferenceUtil.getString(this, Constants.DAY_TIME))) {
+            SharePreferenceUtil.saveString(this, Constants.DAY_TIME, currentDate);
+            SharePreferenceUtil.saveString(this, Constants.HAVE_REMEMBER_WORD_COUNT, "0");
         }
         if (SharePreferenceUtil.getString(this, Constants.LOGIN).equals("login")) {
             //未选择单词书则需要跳转到单词书页面
@@ -67,6 +71,12 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             layoutContent.setVisibility(View.VISIBLE);
         }
+        forgetTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this,ForgetPasswordActivity.class));
+            }
+        });
     }
 
     @OnClick({R.id.loginCommitTextView, R.id.registerCommitTextView})

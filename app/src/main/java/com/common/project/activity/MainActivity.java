@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout settingLayout;
     @BindView(R.id.bottomLayout)
     LinearLayout bottomLayout;
+    @BindView(R.id.logoutTextView)
+    TextView logoutTextView;
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -68,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
                 case 0:
                     ToastUtil.showToast(MainActivity.this, "单词书加载完成！");
                     startActivity(new Intent(MainActivity.this, StartRememberWordActivity.class));
+                    break;
+                case 1:
+                    mainLayout.setVisibility(View.GONE);
+                    settingsLayout.setVisibility(View.VISIBLE);
                     break;
             }
         }
@@ -79,12 +85,39 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
+        logoutTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Constants.wordEntityList.clear();
+                SharePreferenceUtil.saveString(MainActivity.this,Constants.HOUR,"");
+                SharePreferenceUtil.saveString(MainActivity.this,Constants.MINUTE,"");
+                SharePreferenceUtil.saveString(MainActivity.this,Constants.REMIND_TIME,"");
+                SharePreferenceUtil.saveString(MainActivity.this,Constants.PLAN_STUDY_COUNT,"");
+                SharePreferenceUtil.saveString(MainActivity.this,Constants.LOGIN,"");
+                SharePreferenceUtil.saveString(MainActivity.this,Constants.CHOOSE_BOOK,"");
+                SharePreferenceUtil.saveString(MainActivity.this,Constants.START_REMEMBER_POSITION,"");
+                SharePreferenceUtil.saveString(MainActivity.this,Constants.DAY_TIME,"");
+                SharePreferenceUtil.saveString(MainActivity.this,Constants.HAVE_REMEMBER_WORD_COUNT,"");
+                SharePreferenceUtil.saveString(MainActivity.this,Constants.HAVE_REVIEW_WORD_COUNT,"");
+                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                finish();
+            }
+        });
         settingLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainLayout.setVisibility(View.GONE);
-                settingsLayout.setVisibility(View.VISIBLE);
+                if (Constants.wordEntityList.size() == 0) {
+                    ToastUtil.showToast(MainActivity.this, "单词书正在加载哦，请稍等片刻");
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            InitWordUtil.initWordBook(1,mHandler, MainActivity.this, Integer.valueOf(SharePreferenceUtil.getString(MainActivity.this, Constants.CHOOSE_BOOK)));
+                        }
+                    }).start();
+                } else {
+                    mainLayout.setVisibility(View.GONE);
+                    settingsLayout.setVisibility(View.VISIBLE);
+                }
             }
         });
         homeLayout.setOnClickListener(new View.OnClickListener() {
@@ -108,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            InitWordUtil.initWordBook(mHandler, MainActivity.this, Integer.valueOf(SharePreferenceUtil.getString(MainActivity.this, Constants.CHOOSE_BOOK)));
+                            InitWordUtil.initWordBook(0,mHandler, MainActivity.this, Integer.valueOf(SharePreferenceUtil.getString(MainActivity.this, Constants.CHOOSE_BOOK)));
                         }
                     }).start();
                 } else {
@@ -155,6 +188,12 @@ public class MainActivity extends AppCompatActivity {
         //广播的注册，其中Intent.ACTION_TIME_CHANGED代表时间设置变化的时候会发出该广播
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(broadcastReceiver);
+    }
+
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
 
         @Override
@@ -163,14 +202,14 @@ public class MainActivity extends AppCompatActivity {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM HH:mm");
                 SimpleDateFormat simpleDateFormatHour = new SimpleDateFormat("HH");
                 SimpleDateFormat simpleDateFormatMinute = new SimpleDateFormat("mm");
-                Date currentDate=new Date();
-                String currentTime=simpleDateFormat.format(currentDate);
+                Date currentDate = new Date();
+                String currentTime = simpleDateFormat.format(currentDate);
                 String hour = simpleDateFormatHour.format(currentDate);
-                String minute=simpleDateFormatMinute.format(currentDate);
-                Log.d("TimeTick", "onReceive: "+currentTime+" hour = "+hour+"  minute: "+minute);
-                if (SharePreferenceUtil.getString(MainActivity.this,Constants.REMIND_TIME).equals("open")){
-                    if (Integer.valueOf(hour)==Integer.valueOf(SharePreferenceUtil.getString(MainActivity.this,Constants.HOUR))&&
-                            Integer.valueOf(minute)==Integer.valueOf(SharePreferenceUtil.getString(MainActivity.this,Constants.MINUTE))){
+                String minute = simpleDateFormatMinute.format(currentDate);
+                Log.d("TimeTick", "onReceive: " + currentTime + " hour = " + hour + "  minute: " + minute);
+                if (SharePreferenceUtil.getString(MainActivity.this, Constants.REMIND_TIME).equals("open")) {
+                    if (Integer.valueOf(hour) == Integer.valueOf(SharePreferenceUtil.getString(MainActivity.this, Constants.HOUR)) &&
+                            Integer.valueOf(minute) == Integer.valueOf(SharePreferenceUtil.getString(MainActivity.this, Constants.MINUTE))) {
                         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
                         Notification notification = new NotificationCompat.Builder(MainActivity.this)
                                 .setContentTitle("提示")  //设置标题
@@ -179,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
                                 .setSmallIcon(R.mipmap.ic_launcher)
                                 .setAutoCancel(true)
                                 .build();
-                        manager.notify(1,notification);
+                        manager.notify(1, notification);
                     }
                 }
 
