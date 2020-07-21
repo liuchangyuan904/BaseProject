@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -49,7 +50,7 @@ public class ReviewWordActivity extends AppCompatActivity {
     @BindView(R.id.newWordTextView)
     TextView newWordTextView;
     @BindView(R.id.voiceWordTextView)
-    TextView voiceWordTextView;
+    ImageView voiceWordTextView;
     @BindView(R.id.wordLayout)
     RelativeLayout wordLayout;
     @BindView(R.id.radioGroup)

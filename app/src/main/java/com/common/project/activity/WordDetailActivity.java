@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -36,7 +37,7 @@ public class WordDetailActivity extends AppCompatActivity {
     @BindView(R.id.newWordTextView)
     TextView newWordTextView;
     @BindView(R.id.voiceWordTextView)
-    TextView voiceWordTextView;
+    ImageView voiceWordTextView;
     @BindView(R.id.fanyiTextView)
     TextView fanyiTextView;
     @BindView(R.id.egTextView)

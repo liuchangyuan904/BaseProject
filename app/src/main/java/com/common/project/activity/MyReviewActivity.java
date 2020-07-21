@@ -104,7 +104,7 @@ public class MyReviewActivity extends AppCompatActivity {
     }
 
     private void initX() {
-        barChart.getXAxis().setValueFormatter(new XAxisCustom(xAxisList));
+//        barChart.getXAxis().setValueFormatter(new XAxisCustom(xAxisList));
         //默认显示在顶端，这是设置到底部，符合我们正常视觉
         barChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         //去掉底部图例BarChatView 的提示，大家可以根据自己业务需求，对

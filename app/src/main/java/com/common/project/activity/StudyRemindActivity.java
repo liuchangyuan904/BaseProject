@@ -70,6 +70,8 @@ public class StudyRemindActivity extends AppCompatActivity {
                         ToastUtil.showToast(StudyRemindActivity.this, "请设置在0-59分区间内");
                     }
                     SharePreferenceUtil.saveString(StudyRemindActivity.this, Constants.HOUR, hourEditText.getText().toString().trim());
+                    Log.d(TAG, "onCheckedChanged: "+hourEditText.getText().toString().trim());
+                    Log.d(TAG, "onCheckedChanged: "+minuteEditText.getText().toString().trim());
                     SharePreferenceUtil.saveString(StudyRemindActivity.this, Constants.MINUTE, minuteEditText.getText().toString().trim());
                     SharePreferenceUtil.saveString(StudyRemindActivity.this, Constants.REMIND_TIME, "open");
                 } else {

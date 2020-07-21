@@ -12,9 +12,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.common.project.Constants;
+import com.common.project.MyApplication;
 import com.common.project.R;
+import com.common.project.entity.UserInfoEntity;
 import com.common.project.http.HttpUtil;
 import com.common.project.listener.HttpResponseListener;
+import com.common.project.util.Base64Utils;
 import com.common.project.util.SharePreferenceUtil;
 
 import java.text.SimpleDateFormat;
@@ -74,11 +77,11 @@ public class LoginActivity extends AppCompatActivity {
         forgetTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this,ForgetPasswordActivity.class));
+                startActivity(new Intent(LoginActivity.this, ForgetPasswordActivity.class));
             }
         });
     }
-
+    String md5;
     @OnClick({R.id.loginCommitTextView, R.id.registerCommitTextView})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -88,6 +91,11 @@ public class LoginActivity extends AppCompatActivity {
                     public void onSuccess(String json) {
                         Log.d(TAG, "onSuccess: " + json);
                         SharePreferenceUtil.saveString(LoginActivity.this, Constants.LOGIN, "login");
+                        SharePreferenceUtil.saveString(LoginActivity.this, Constants.userId, userEditText.getText().toString().trim());
+                        UserInfoEntity userInfoEntity=new UserInfoEntity();
+                        userInfoEntity.setUserName(Base64Utils.getBase64(userEditText.getText().toString().trim()));
+                        userInfoEntity.setPassword(Base64Utils.getBase64(passwordEditText.getText().toString().trim()));
+                        MyApplication.getInstance().getSession().getUserInfoEntityDao().insert(userInfoEntity);
                         startActivity(new Intent(LoginActivity.this, ChooseBookActivity.class));
                         finish();
                     }
@@ -97,9 +105,12 @@ public class LoginActivity extends AppCompatActivity {
                         Log.d(TAG, "onFailed: " + json);
                     }
                 });
+               md5=Base64Utils.getBase64("11@126.com");
+                Log.d(TAG, "onClick: "+md5);
                 break;
             case R.id.registerCommitTextView:
-                startActivity(new Intent(this, RegisterActivity.class));
+//                startActivity(new Intent(this, RegisterActivity.class));
+                Log.d(TAG, "onClick: "+Base64Utils.getFromBase64(md5));
                 break;
         }
     }

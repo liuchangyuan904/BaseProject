@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -50,7 +51,7 @@ public class StartRememberWordActivity extends AppCompatActivity {
     @BindView(R.id.newWordTextView)
     TextView newWordTextView;
     @BindView(R.id.voiceWordTextView)
-    TextView voiceWordTextView;
+    ImageView voiceWordTextView;
     int startRememberWordPosition;
     WordEntity currentWordEntity;
     private MediaPlayer mMediaPlayer;

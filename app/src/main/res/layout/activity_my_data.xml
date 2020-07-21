@@ -24,12 +24,13 @@
         <TextView
             android:id="@+id/myStudyTextView"
             android:layout_width="match_parent"
-            android:text="我的学习"
+            android:text="学习与复习"
             android:padding="20dp"
             android:textSize="15sp"
             android:textColor="@color/black"
             android:layout_height="wrap_content" />
         <View
+            android:visibility="gone"
             android:background="@color/divider"
             android:layout_width="match_parent"
             android:layout_height="1px"/>
@@ -38,6 +39,7 @@
             android:layout_width="match_parent"
             android:text="我的复习"
             android:padding="20dp"
+            android:visibility="gone"
             android:textSize="15sp"
             android:textColor="@color/black"
             android:layout_height="wrap_content" />

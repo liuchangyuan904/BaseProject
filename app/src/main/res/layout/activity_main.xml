@@ -47,6 +47,7 @@
             android:id="@+id/userLayout"
             android:layout_height="120dp">
             <TextView
+                android:id="@+id/userIdTextView"
                 android:textSize="18sp"
                 android:text="11@126.com"
                 android:gravity="center"

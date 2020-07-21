@@ -57,7 +57,8 @@
             android:textColor="@color/day_text_color"
             android:textSize="18sp" />
 
-        <TextView
+        <ImageView
+            android:src="@mipmap/voice"
             android:id="@+id/voiceWordTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

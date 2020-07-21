@@ -24,6 +24,7 @@ public class DaoMaster extends AbstractDaoMaster {
         NewWordEntityDao.createTable(db, ifNotExists);
         UnKnownWordEntityDao.createTable(db, ifNotExists);
         DayStudyEntityDao.createTable(db, ifNotExists);
+        UserInfoEntityDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
@@ -31,6 +32,7 @@ public class DaoMaster extends AbstractDaoMaster {
         NewWordEntityDao.dropTable(db, ifExists);
         UnKnownWordEntityDao.dropTable(db, ifExists);
         DayStudyEntityDao.dropTable(db, ifExists);
+        UserInfoEntityDao.dropTable(db, ifExists);
     }
 
     /**
@@ -52,6 +54,7 @@ public class DaoMaster extends AbstractDaoMaster {
         registerDaoClass(NewWordEntityDao.class);
         registerDaoClass(UnKnownWordEntityDao.class);
         registerDaoClass(DayStudyEntityDao.class);
+        registerDaoClass(UserInfoEntityDao.class);
     }
 
     public DaoSession newSession() {

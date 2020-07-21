@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Constants {
+    public static final String userId="userId";
     public static final String HOUR = "hour";
     public static final String MINUTE = "minute";
     public static final String REMIND_TIME = "remind_time";

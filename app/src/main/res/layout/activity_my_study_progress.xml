@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,8 +18,36 @@
         app:show_left="true"></com.common.project.CommonHead>
 
     <com.github.mikephil.charting.charts.PieChart
+        android:layout_below="@+id/act_phone_head"
         android:layout_margin="30dp"
         android:id="@+id/pieChart"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-</LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/haveStudyCountTextView"
+            android:textColor="@color/find_pwd_bg"
+            android:layout_width="260dp"
+            android:textSize="15sp"
+            android:padding="10dp"
+            android:gravity="left"
+            android:text="已学习单词个数:"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:paddingLeft="10dp"
+            android:id="@+id/unStudyTextView"
+            android:paddingBottom="10dp"
+            android:textColor="@color/find_pwd_bg"
+            android:layout_width="260dp"
+            android:textSize="15sp"
+            android:gravity="left"
+            android:text="未学习单词个数:"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</RelativeLayout>

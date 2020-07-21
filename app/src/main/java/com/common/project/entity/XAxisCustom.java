@@ -6,14 +6,15 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import java.util.List;
 
 public class XAxisCustom implements IAxisValueFormatter {
-    String [] list;
 
-    public XAxisCustom(String[] list) {
+    List<String> list;
+
+    public XAxisCustom(List<String> list) {
         this.list = list;
     }
 
     @Override
     public String getFormattedValue(float value, AxisBase axis) {
-        return list[((int) value)];
+        return list.get((int) value);
     }
 }

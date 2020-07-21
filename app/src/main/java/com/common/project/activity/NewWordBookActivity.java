@@ -18,6 +18,7 @@ import com.common.project.CommonHead;
 import com.common.project.MyApplication;
 import com.common.project.R;
 import com.common.project.entity.NewWordEntity;
+import com.common.project.util.ToastUtil;
 import com.common.project.view.SwipeItemLayout;
 
 import java.util.ArrayList;
@@ -38,6 +39,7 @@ public class NewWordBookActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_word_book);
+        ToastUtil.showToast(this,"生词本的单词可滑动删除哦！");
         ButterKnife.bind(this);
         actPhoneHead.setLeftClick(new CommonHead.CommonHeadLeftClick() {
             @Override

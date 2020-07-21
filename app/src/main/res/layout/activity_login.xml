@@ -126,6 +126,7 @@
         android:background="@color/day_1px_divider_color" />
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
